@@ -1,0 +1,26 @@
+{
+  "name": "final",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon ./src/index.js",
+    "knex:init": "knex init --cwd /src",
+    "migrate": "npx knex migrate:latest --knexfile /src/knexfile.js",
+    "rollback": "npx knex migrate:rollback --knexfile src/knexfile.js",
+    "make:migration": "npx knex migrate:make --knexfile src/knexfile.js"
+  },
+  "dependencies": {
+    "argon2": "^0.28.2",
+    "bookshelf": "^1.2.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "knex": "^0.95.6",
+    "morgan": "^1.10.0",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
