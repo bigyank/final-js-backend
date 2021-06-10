@@ -2,7 +2,7 @@ import "./env.js";
 import express from "express";
 import morgan from "morgan";
 
-import userRoute from "./routes/userRoute.js";
+import routes from "./routes/index.js";
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(morgan("tiny"));
 
 // routes
-app.use(userRoute);
+app.use("/api", routes);
 
 const PORT = 4000;
 

@@ -6,6 +6,10 @@ class User extends bookshelf.Model {
   get tableName() {
     return TABLE_NAME;
   }
+
+  get hidden() {
+    return ["password"];
+  }
 }
 
 export default User;
