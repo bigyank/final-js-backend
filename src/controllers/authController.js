@@ -1,9 +1,15 @@
+import createError from "http-errors";
 import userService from "../services/userService.js";
 import { comparePassword, hashPassword } from "../utils/hasher.js";
 import { createJwt } from "../utils/jwt.js";
 
 export async function signup(req, res) {
   const { email, password, fullName } = req.body;
+  const existingUser = await userService.findUser({ email });
+  if (existingUser) {
+    throw new createError.BadRequest();
+  }
+
   const hashedPassword = await hashPassword(password);
   const createdUser = await userService.createUser({
     email,

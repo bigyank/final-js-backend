@@ -6,18 +6,21 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "knex:init": "knex init --cwd /src",
-    "migrate": "npx knex migrate:latest --knexfile /src/knexfile.js",
+    "knex:init": "knex init --cwd src",
+    "migrate": "npx knex migrate:latest --knexfile src/knexfile.js",
     "rollback": "npx knex migrate:rollback --knexfile src/knexfile.js",
     "make:migration": "npx knex migrate:make --knexfile src/knexfile.js"
   },
   "dependencies": {
     "argon2": "^0.28.2",
     "bookshelf": "^1.2.0",
+    "bookshelf-cascade-delete": "^2.0.1",
+    "bookshelf-uuid": "^1.0.1",
     "celebrate": "^14.0.0",
     "compression": "^1.7.4",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "express-jwt": "^6.0.0",
     "express-rate-limit": "^5.2.6",
     "helmet": "^4.6.0",

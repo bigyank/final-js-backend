@@ -21,8 +21,7 @@ export default function json(req, _res, next) {
     disallowedHttpHeaders.includes(method) &&
     isEmpty(body)
   ) {
-    const err = new createError.BadRequest();
-    next(err);
+    throw new createError.BadRequest();
   }
 
   next();

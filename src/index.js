@@ -3,8 +3,8 @@ import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import compression from "compression";
-
 import json from "./middlewares/json.js";
+import "express-async-errors";
 
 import routes from "./routes/index.js";
 import { genericErrorHandler } from "./middlewares/errorHandler.js";

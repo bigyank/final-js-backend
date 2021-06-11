@@ -8,6 +8,7 @@ import { isHttpError } from "http-errors";
  * @returns {Object}
  */
 function buildError(error) {
+  console.log(error);
   // return is validation error
   if (isCelebrateError(error)) {
     const message =

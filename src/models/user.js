@@ -7,8 +7,16 @@ class User extends bookshelf.Model {
     return TABLE_NAME;
   }
 
+  get uuid() {
+    return true;
+  }
+
   get hidden() {
     return ["password"];
+  }
+
+  posts() {
+    return this.hasMany("Post");
   }
 }
 
