@@ -24,7 +24,7 @@ function buildError(error) {
   }
 
   //   if invalaid token
-  if (err.name === "UnauthorizedError") {
+  if (error.name === "UnauthorizedError") {
     return {
       code: 401,
       message: "Unauthorized",

@@ -1,10 +1,11 @@
 import express from "express";
-import { celebrate } from "celebrate";
-import authRoute from "./authRoute/authRoute.js";
-import { authFormValidator } from "../validators/authValidator.js";
+import authRoute from "./authRoute.js";
+import userRoute from "./userRoute.js";
+import { verifyJWT } from "../utils/jwt.js";
 
 const router = express.Router();
 
-router.use("/auth", celebrate(authFormValidator), authRoute);
+router.use("/auth", authRoute);
+router.use("/users", verifyJWT, userRoute);
 
 export default router;
