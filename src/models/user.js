@@ -1,6 +1,6 @@
-import bookshelf from "../db.js";
+import bookshelf from '../db.js';
 
-const TABLE_NAME = "users";
+const TABLE_NAME = 'users';
 
 class User extends bookshelf.Model {
   get tableName() {
@@ -12,12 +12,12 @@ class User extends bookshelf.Model {
   }
 
   get hidden() {
-    return ["password"];
+    return ['password'];
   }
 
   posts() {
-    return this.hasMany("Post");
+    return this.hasMany('Post');
   }
 }
 
-export default bookshelf.model("User", User);
+export default bookshelf.model('User', User);

@@ -1,4 +1,4 @@
-import createError from "http-errors";
+import createError from 'http-errors';
 
 /**
  * Middleware to handle empty JSON body requests and other edge cases if any.
@@ -14,10 +14,10 @@ function isEmpty(obj) {
 
 export default function json(req, _res, next) {
   const { body, method } = req;
-  const disallowedHttpHeaders = ["PUT", "POST", "PATCH"];
+  const disallowedHttpHeaders = ['PUT', 'POST', 'PATCH'];
 
   if (
-    req.is("application/json") &&
+    req.is('application/json') &&
     disallowedHttpHeaders.includes(method) &&
     isEmpty(body)
   ) {

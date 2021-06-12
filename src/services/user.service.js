@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+import User from '../models/User.js';
 
 class UserService {
   createUser(user) {
@@ -6,7 +6,7 @@ class UserService {
   }
 
   findUser(user) {
-    return new User(user).fetch({ require: false });
+    return new User(user).fetch({ require: false, withRelated: ['posts'] });
   }
 }
 

@@ -1,4 +1,4 @@
-import Post from "../models/Post.js";
+import Post from '../models/Post.js';
 
 class PostService {
   createPost(post) {
@@ -7,7 +7,7 @@ class PostService {
 
   getPost(id) {
     return new Post(id).fetch({
-      withRelated: ["user"],
+      withRelated: ['user'],
     });
   }
 }

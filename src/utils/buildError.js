@@ -1,5 +1,6 @@
-import { isCelebrateError } from "celebrate";
-import { isHttpError } from "http-errors";
+import { StatusCodes, ReasonPhrases } from 'http-status-codes';
+import { isCelebrateError } from 'celebrate';
+import { isHttpError } from 'http-errors';
 
 /**
  * Build error response for validation errors.
@@ -12,8 +13,8 @@ function buildError(error) {
   // return is validation error
   if (isCelebrateError(error)) {
     const message =
-      error.details.get("body")?.message || "something went wrong";
-    return { code: 400, message };
+      error.details.get('body')?.message || 'something went wrong';
+    return { code: StatusCodes.BAD_GATEWAY, message };
   }
 
   //   return if http error
@@ -25,17 +26,17 @@ function buildError(error) {
   }
 
   //   if invalaid token
-  if (error.name === "UnauthorizedError") {
+  if (error.name === 'UnauthorizedError') {
     return {
-      code: 401,
-      message: "Unauthorized",
+      code: StatusCodes.UNAUTHORIZED,
+      message: ReasonPhrases.UNAUTHORIZED,
     };
   }
 
   // Return INTERNAL_SERVER_ERROR for all other cases
   return {
-    code: 500,
-    message: "Internal Server Error",
+    code: StatusCodes.INTERNAL_SERVER_ERROR,
+    message: ReasonPhrases.INTERNAL_SERVER_ERROR,
   };
 }
 

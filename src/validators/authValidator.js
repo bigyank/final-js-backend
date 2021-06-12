@@ -1,4 +1,4 @@
-import { Joi, Segments } from "celebrate";
+import { Joi, Segments } from 'celebrate';
 
 const authSchema = {
   email: Joi.string().email().lowercase().trim().required(),
