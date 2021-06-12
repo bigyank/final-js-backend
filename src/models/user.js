@@ -20,4 +20,4 @@ class User extends bookshelf.Model {
   }
 }
 
-export default User;
+export default bookshelf.model("User", User);

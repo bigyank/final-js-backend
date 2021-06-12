@@ -16,4 +16,4 @@ class Post extends bookshelf.Model {
   }
 }
 
-export default Post;
+export default bookshelf.model("Post", Post);

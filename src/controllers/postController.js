@@ -7,3 +7,9 @@ export async function makePost(req, res) {
   const newPost = await postService.createPost({ user_id: id, title, body });
   res.status(201).send(newPost);
 }
+
+export async function getPost(req, res) {
+  const { id } = req.params;
+  const fetchedPost = await postService.getPost({ id });
+  res.status(200).send(fetchedPost);
+}
