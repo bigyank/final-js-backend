@@ -7,3 +7,9 @@ export const makeCommentValidator = {
     postId: Joi.string().required(),
   }),
 };
+
+export const editCommentValidator = {
+  [Segments.BODY]: Joi.object().keys({
+    body: Joi.string(),
+  }),
+};

@@ -1,3 +1,4 @@
+import createError from 'http-errors';
 import { StatusCodes } from 'http-status-codes';
 
 import commentService from '../services/comment.service.js';
@@ -13,6 +14,24 @@ export async function makeComment(req, res) {
   });
 
   res.status(StatusCodes.CREATED).send(newPost);
+}
+
+export async function editCommentById(req, res) {
+  const { id: userId } = req.user;
+  const { id: commentId } = req.params;
+  const commentUpdates = req.body;
+
+  const updatedComment = await commentService.editCommentById(
+    userId,
+    commentId,
+    commentUpdates
+  );
+
+  if (!updatedComment) {
+    throw new createError.NotFound();
+  }
+
+  return res.status(StatusCodes.ACCEPTED).send(updatedComment);
 }
 
 export async function deleteCommentById(req, res) {
