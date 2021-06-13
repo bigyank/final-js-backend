@@ -5,10 +5,19 @@ class PostService {
     return new Post(post).save();
   }
 
-  getPost(id) {
-    return new Post(id).fetch({
-      withRelated: ['user'],
+  getPostById(id) {
+    return Post.where(id).fetch({
+      require: false,
+      withRelated: ['user', 'comments.user'],
     });
+  }
+
+  getAllPosts() {
+    return Post.fetchAll();
+  }
+
+  deletePostById({ id, user_id }) {
+    return Post.where({ id, user_id }).destroy({ require: false });
   }
 }
 

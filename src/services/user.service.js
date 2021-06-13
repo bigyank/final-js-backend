@@ -6,7 +6,11 @@ class UserService {
   }
 
   findUser(user) {
-    return new User(user).fetch({ require: false, withRelated: ['posts'] });
+    return User.where(user).fetch({ require: false });
+  }
+
+  getUserPosts(user) {
+    return User.where(user).fetch({ require: false, withRelated: ['posts'] });
   }
 }
 

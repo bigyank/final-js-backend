@@ -10,7 +10,7 @@ export async function signup(req, res) {
   const { email, password, fullName } = req.body;
   const existingUser = await userService.findUser({ email });
   if (existingUser) {
-    throw new createError.BadRequest();
+    throw new createError.BadRequest('email already exists');
   }
 
   const hashedPassword = await hashPassword(password);
@@ -33,7 +33,7 @@ export async function login(req, res) {
     (await comparePassword(foundUser.get('password'), password))
   ) {
     const token = await createJwt({ id: foundUser.get('id') });
-    return res.status(StatusCodes.ACCEPTED).send({ user: foundUser, token });
+    return res.status(StatusCodes.OK).send({ user: foundUser, token });
   }
 
   return res

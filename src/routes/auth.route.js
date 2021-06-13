@@ -6,7 +6,7 @@ import { signup, login } from '../controllers/auth.controller.js';
 import {
   loginFormValidator,
   signupFormValidator,
-} from '../validators/authValidator.js';
+} from '../validators/auth.validator.js';
 
 const router = express.Router();
 

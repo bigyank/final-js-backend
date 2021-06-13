@@ -13,11 +13,30 @@ export async function makePost(req, res) {
 
 export async function getPost(req, res) {
   const { id } = req.params;
-  const fetchedPost = await postService.getPost({ id });
+  const fetchedPost = await postService.getPostById({ id });
 
   if (!fetchedPost) {
     throw new createError.NotFound();
   }
 
-  res.status(StatusCodes.ACCEPTED).send(fetchedPost);
+  res.status(StatusCodes.OK).send(fetchedPost);
+}
+
+export async function getAllPosts(req, res) {
+  const fetchedPost = await postService.getAllPosts();
+
+  if (!fetchedPost) {
+    return res.status(StatusCodes.OK).send([]);
+  }
+
+  return res.status(StatusCodes.OK).send(fetchedPost);
+}
+
+export async function deletePostById(req, res) {
+  const { id: userId } = req.user;
+  const { id } = req.params;
+
+  await postService.deletePostById({ id, user_id: userId });
+
+  return res.status(StatusCodes.NO_CONTENT).end();
 }

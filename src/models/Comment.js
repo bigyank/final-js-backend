@@ -1,10 +1,10 @@
 import bookshelf from '../db.js';
 import User from './User.js';
-import Comment from './Comment.js';
+import Post from './Post.js';
 
-const TABLE_NAME = 'posts';
+const TABLE_NAME = 'comments';
 
-class Post extends bookshelf.Model {
+class Comment extends bookshelf.Model {
   get tableName() {
     return TABLE_NAME;
   }
@@ -21,9 +21,9 @@ class Post extends bookshelf.Model {
     return this.belongsTo(User);
   }
 
-  comments() {
-    return this.hasMany(Comment);
+  post() {
+    return this.belongsTo(Post);
   }
 }
 
-export default Post;
+export default Comment;
