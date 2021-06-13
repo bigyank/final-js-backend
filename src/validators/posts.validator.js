@@ -7,3 +7,10 @@ export const makePostValidator = {
     body: Joi.string().required(),
   }),
 };
+
+export const editPostValidator = {
+  [Segments.BODY]: Joi.object().keys({
+    title: Joi.string(),
+    body: Joi.string(),
+  }),
+};

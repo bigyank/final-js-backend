@@ -32,6 +32,24 @@ export async function getAllPosts(req, res) {
   return res.status(StatusCodes.OK).send(fetchedPost);
 }
 
+export async function editPostById(req, res) {
+  const { id: userId } = req.user;
+  const { id: postId } = req.params;
+  const postUpdates = req.body;
+
+  const updatedPost = await postService.editPostById(
+    userId,
+    postId,
+    postUpdates
+  );
+
+  if (!updatedPost) {
+    throw new createError.NotFound();
+  }
+
+  return res.status(StatusCodes.ACCEPTED).send(updatedPost);
+}
+
 export async function deletePostById(req, res) {
   const { id: userId } = req.user;
   const { id } = req.params;
