@@ -5,9 +5,8 @@ import postService from '../services/post.service.js';
 
 export async function makePost(req, res) {
   const { id } = req.user;
-  const { title, body } = req.body;
 
-  const newPost = await postService.createPost({ user_id: id, title, body });
+  const newPost = await postService.createPost({ user_id: id, ...req.body });
   res.status(StatusCodes.CREATED).send(newPost);
 }
 

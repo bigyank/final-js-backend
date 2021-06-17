@@ -36,7 +36,5 @@ export async function login(req, res) {
     return res.status(StatusCodes.OK).send({ user: foundUser, token });
   }
 
-  return res
-    .status(StatusCodes.BAD_REQUEST)
-    .send({ message: "email or password didn't match" });
+  throw new createError.BadRequest("email or password didn't match");
 }
