@@ -24,6 +24,8 @@ class Post extends bookshelf.Model {
   comments() {
     return this.hasMany(Comment);
   }
+
+  static dependents = ['comments'];
 }
 
 export default Post;
